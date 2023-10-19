@@ -9,20 +9,6 @@ document.body.addEventListener('keyup', (tecla) => {
     playSound(tecla.code.toLowerCase());
 } );
 
-document.querySelector('.composer button').addEventListener('click', cancao);
-
-
-function cancao() {
-
-    let musica = document.querySelector('#input').value;
-
-    if(typeof musica !== 'undefined' && musica !== '' && typeof musica === 'string') {
-        let arrayMusica = musica.split('');
-        playMusica(arrayMusica);
-    }
-
-}
-
 function playSound(som) {
 
     let audioElement = document.querySelector(`#s_${som}`); 
@@ -40,6 +26,28 @@ function playSound(som) {
 
 }
 
+/* Parte do Código dedicada tocar a composição digitada */
+
+// coloca um observador de evento diretamente no botão de tocar a canção, fazendo com que ao clicar, um evento ("canção") seja executado
+document.querySelector('.composer button').addEventListener('click', cancao);
+
+
+function cancao() {
+
+    // pega o valor digitado no input
+    let musica = document.querySelector('#input').value;
+
+    // verifica se o tipo do arquivo é indefinido, se não está vazio e se é uma string.
+    // depois pega a string e transforma em um array e então envia esse array para uma função "playMusica".
+    if(typeof musica !== 'undefined' && musica !== '' && typeof musica === 'string') {
+        let arrayMusica = musica.split('');
+        playMusica(arrayMusica);
+    }
+
+}
+
+// a função recebe o array enviado anteriormente, então inicializamos uma variável com o valor em zero
+// essa variável será o nosso tempo utilizado no SetTimeout, que inicia em zero, porém a cada volta do looping, adiciona +250milissegundos.
 function playMusica(arrayMusica) {
 
     let espera = 0;
