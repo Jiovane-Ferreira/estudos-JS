@@ -10,3 +10,22 @@
     justify-content: center;
     align-items: center;
 }
+
+input[type=range] {
+    -webkit-appearance: none;
+
+    background-color: #FEF7FF;
+    width: 180px;
+    height: 4px;
+    outline: none;
+
+}
+
+input[type=range]::-moz-range-track {
+    width: 180px;
+    height: 4px;
+    background: darkgray;
+    border: none;
+    border-radius: 3px;
+}
+
