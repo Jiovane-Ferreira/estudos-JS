@@ -5,18 +5,22 @@
 
 .container {
     height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: aquamarine;
 }
 
 #valueDisplay {
     font-family: Poppins;
     font-size: 20px;
     font-weight: 500;
+    background-color: blueviolet;
 
 }
+
+#inputRangeArea {
+    background-color: chartreuse;
+}
+
+#rangeTextArea #text-1 {}
 
 /* mudanças Input para o Chrome, Safari, Opera */
 input[type="range"] {
