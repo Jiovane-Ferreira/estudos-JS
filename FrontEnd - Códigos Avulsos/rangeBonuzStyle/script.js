@@ -2,12 +2,12 @@
 
 let valueDisplay = document.getElementById('valueDisplay');
 let valueRange = document.getElementById('valueRange');
-let text1 = document.getElementById('text-1');
-let text2 = document.getElementById('text-2');
-let text3 = document.getElementById('text-3');
-let text4 = document.getElementById('text-4');
+
+let textoDinamico = document.getElementById('texto');
 
 //evento Listener que chama os eventos
+
+textoDinamico.innerHTML = 'Você solicita até 1 demandas por mês, então o plano <br /> ideal para a sua empresa é o Plano Freemium.';
 
 valueRange.addEventListener('input', rangeFunction);
 
@@ -19,41 +19,36 @@ function demandas() {
     valueDisplay.innerText = valueRange.value;
 }
 
-function showHide() {
+function dynamicTextChange() {
     
     if (valueRange.value >= 4 && valueRange.value <= 8) {
 
-        text1.style.display = 'none';
-        text2.style.display = 'inline-block';
-        text3.style.display = 'none';
-        text4.style.display = 'none';
+        textChange('Essêncial');
 
     } else if (valueRange.value >= 9 && valueRange.value <= 12) {
 
-        text1.style.display = 'none';
-        text2.style.display = 'none';
-        text3.style.display = 'inline-block';
-        text4.style.display = 'none';
+        textChange('Premium');
         
     } else if (valueRange.value >= 13) {
 
-        text1.style.display = 'none';
-        text2.style.display = 'none';
-        text3.style.display = 'none';
-        text4.style.display = 'inline-block';
+        textChange('Platinum');
 
     } else {
 
-        text1.style.display = 'inline-block';
-        text2.style.display = 'none';
-        text3.style.display = 'none';
-        text4.style.display = 'none';
+        textChange('Freemium');
     }
+
+}
+
+
+function textChange(plano) {
+
+    textoDinamico.innerHTML = `Você solicita até ${valueRange.value} demandas por mês, então o plano <br /> ideal para a sua empresa é o Plano ${plano}.`;
 
 }
 
 function rangeFunction() {
     
     demandas();
-    showHide();
+    dynamicTextChange();
 }
